@@ -40,3 +40,6 @@ out/
 
 # MongoDB data (if using local db folder)
 data/db/
+
+# Application properties (contains secrets)
+src/main/resources/application.properties
