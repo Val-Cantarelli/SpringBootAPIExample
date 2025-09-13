@@ -1,0 +1,29 @@
+# fly.toml file generated for tanto12faz on 2023-04-04T21:53:27-04:00
+
+app = "tanto12faz"
+kill_signal = "SIGINT"
+kill_timeout = 5
+mounts = []
+primary_region = "yyz"
+processes = []
+
+[build]
+  image = "sha256:f09b6ef70d0dea7290e662df8aca705a6bc4a1b484b94731da46cc95129a89e6"
+
+[[services]]
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
